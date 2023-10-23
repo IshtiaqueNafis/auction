@@ -1,0 +1,20 @@
+# Define the services section, where you specify containers and their configurations
+services:
+  # Create a service named "postgres" using the official PostgreSQL Docker image
+  postgres:
+    image: postgres
+    # Set the PostgreSQL password for the database
+    environment:
+      - POSTGRES_USER:postgres
+      - POSTGRES_PASSWORD:password
+    # Map port 5432 on the host to port 5432 inside the container
+    ports:
+      - 5432:5432
+    # Create a named volume for persisting PostgreSQL data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+# Define the volumes section, where you specify named volumes
+volumes:
+  # Create a named volume named "pgdata" for persisting PostgreSQL data
+  pgdata:
